@@ -1,0 +1,21 @@
+
+sudo apt-get install v4l-utils
+
+
+confirm the camera  parameters
+
+$ v4l2-ctl -L
+
+
+changing the exposure parameter
+
+set the exposure parameter "manual"
+$ v4l2-ctl -d 0 -c exposure_auto=1 -c exposure_absolute=300
+
+set the exposure parameter "auto"
+$ v4l2-ctl -d 0 -c exposure_auto=3
+
+
+changing framerate (not worked for my laptop's build-in camera)
+
+$ v4l2-ctl -d 0 -p 27.5
