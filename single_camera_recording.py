@@ -45,7 +45,7 @@ def capture(camera_ID, video_number):
     brightness = 0.498039215803
     contrast = 0.6
     saturation = 0.3
-    fps = 20
+    fps = 30
 
     # settings of FPS counter
     count_fps = True
