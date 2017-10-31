@@ -27,11 +27,11 @@ class FrameRate:
 
 
 # preparing to save the video
-def initWriter(camera_ID, w, h, fps, save_path):
+def initWriter(video_name, w, h, fps, save_path):
     #fourcc = cv2.cv.CV_FOURCC('D','I','B',' ')
     #fourcc = cv2.cv.CV_FOURCC('D','I','V','X')
     fourcc = cv2.cv.CV_FOURCC('F','L','V','1')
-    rec = cv2.VideoWriter(save_path+'camera_'+str(camera_ID)+'.avi', \
+    rec = cv2.VideoWriter(save_path+str(video_name)+'.avi', \
                           fourcc, fps, (w, h))
     return rec
 
@@ -48,7 +48,7 @@ def capture(camera_ID, video_number):
     fps = 30
 
     # settings of FPS counter
-    count_fps = True
+    count_fps = False
     gFrameRate = FrameRate()
     fontcolor = (255,255,255)
     fontface  = cv2.FONT_HERSHEY_SIMPLEX
@@ -73,12 +73,12 @@ def capture(camera_ID, video_number):
     cap.set(cv2.cv.CV_CAP_PROP_SATURATION, saturation)
     cap.set(cv2.cv.CV_CAP_PROP_FPS, fps)
 
-    save_path = 'videos/' + str(video_number) + '/'
+    save_path = 'videos/'
 
     if not os.path.isdir(save_path):
         os.makedirs(save_path)
 
-    rec = initWriter(camera_ID, width, height, fps, save_path)
+    rec = initWriter(video_number, width, height, fps, save_path)
     cv2.namedWindow('camera:'+str(camera_ID), cv2.WINDOW_NORMAL)
     save_flag = False
 
